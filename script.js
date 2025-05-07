@@ -6,12 +6,19 @@
     const form = document.getElementById('loginForm');
 
     // Show "Login as existing user" if credentials exist
-    const savedUsername = localStorage.getItem('username');
-    const savedPassword = localStorage.getItem('password');
+    // Always hide the button first
+existingBtn.style.display = 'none';
 
-    if (savedUsername && savedPassword) {
-      existingBtn.style.display = 'inline';
-    }
+// Then conditionally show it if credentials exist
+window.addEventListener('DOMContentLoaded', () => {
+  const savedUsername = localStorage.getItem('username');
+  const savedPassword = localStorage.getItem('password');
+
+  if (savedUsername && savedPassword) {
+    existingBtn.style.display = 'inline';
+  }
+});
+
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
